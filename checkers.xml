@@ -1,0 +1,26 @@
+<checkers version="1.3">
+    <categories>
+        <category name="C and C++">
+            <category name="Custom checkers">
+                <error id="CWARN.ARGORDER"/>
+            </category>
+        </category>
+    </categories>
+
+    <checkergroup language="C/C++" api="tree_pattern">
+        <checker id="CWARN.ARGORDER">
+            <libraries>
+                <library path="cf-argument-order"/>
+            </libraries>
+            <error id="CWARN.ARGORDER"
+                   enabled="true"
+                   severity="3"
+                   title="Possible incorrect argument order"
+                   message="{0}">
+                <pattern>
+		  // CallExpr[$msg := isMisorderedArguments()][$msg.length() > 0][$0 := $msg]
+                </pattern>
+            </error>
+        </checker>
+    </checkergroup>
+</checkers>

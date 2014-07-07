@@ -1,0 +1,16 @@
+KW_INSTALL_DIR=/usr/local/kw/cmdline
+TARGET_LIB_PATH=ix86-pc-linux/cf-argument-order.so
+TARGET_LIB_NAME=cf-argument-order
+
+install: $(TARGET_LIB_NAME)
+$(TARGET_LIB_NAME):
+	gcc -m32 -I $(KW_INSTALL_DIR)/include -fpic -c PluginSource.cpp
+	gcc -m32 -shared -o $(TARGET_LIB_PATH) PluginSource.o -static-libgcc
+	rm -f PluginSource.o
+
+clean :
+	rm -f PluginSource.o
+	rm -f $(TARGET_LIB_PATH)
+
+.PHONY : install clean
+
